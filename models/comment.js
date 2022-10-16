@@ -14,9 +14,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Comment.init({
-    UserId: DataTypes.INTEGER,
-    PhotoId: DataTypes.INTEGER,
-    comment: DataTypes.TEXT
+    UserId: {
+      type: DataTypes.INTEGER
+    },
+    PhotoId: {
+      type: DataTypes.INTEGER
+    },
+    comment: {
+      type: DataTypes.TEXT,
+      validate: {
+        notEmpty: true
+      },
+    }
   }, {
     sequelize,
     modelName: 'Comment',
