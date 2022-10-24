@@ -9,36 +9,39 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.User, { foreignKey: "UserId" });
+      this.belongsTo(models.User, { foreignKey: 'UserId' });
     }
   }
-  Photo.init({
-    UserId: {
-      type: DataTypes.INTEGER,
-    },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
+  Photo.init(
+    {
+      UserId: {
+        type: DataTypes.INTEGER,
+      },
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+        },
+      },
+      caption: {
+        type: DataTypes.TEXT,
+        validate: {
+          notEmpty: true,
+        },
+      },
+      poster_image_url: {
+        type: DataTypes.TEXT,
+        validate: {
+          isUrl: true,
+          notEmpty: true,
+        },
       },
     },
-    caption: {
-      type: DataTypes.TEXT,
-      validate: {
-        notEmpty: true
-      },
-    },
-    poster_image_url: {
-      type: DataTypes.TEXT,
-      validate: {
-        isUrl: true,
-        notEmpty: true
-      },
+    {
+      sequelize,
+      modelName: 'Photo',
     }
-  }, {
-    sequelize,
-    modelName: 'Photo',
-  });
+  );
   return Photo;
 };
