@@ -32,7 +32,7 @@ class UserControlller {
       };
 
       const token = generateToken(payload);
-      res.status(201).json({ token });
+      return res.status(201).json({ token });
     } catch (err) {
       return res.status(500).json(err.message);
     }
@@ -128,7 +128,7 @@ class UserControlller {
         age: result.age,
         phone_number: result.phone_number,
       };
-      res.status(200).json(payload);
+      return res.status(200).json(payload);
     } catch (err) {
       if (err.name === 'SequelizeValidationError') {
         const errValidation = {};
@@ -149,7 +149,7 @@ class UserControlller {
           id,
         },
       });
-      res.status(200).json({
+      return res.status(200).json({
         message: 'Your account has been successfully deleted',
       });
     } catch (err) {

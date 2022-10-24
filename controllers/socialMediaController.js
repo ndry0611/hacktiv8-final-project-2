@@ -10,7 +10,7 @@ class SocialMediaController {
           UserId: user,
         },
       });
-      res.status(200).json(result);
+      return res.status(200).json(result);
     } catch (err) {
       return res.status(500).json(err.message);
     }
@@ -69,7 +69,7 @@ class SocialMediaController {
       });
       social_media = social_media[1][0].dataValues;
 
-      res.status(200).json({ social_media });
+      return res.status(200).json({ social_media });
     } catch (err) {
       if (err.name === 'SequelizeValidationError') {
         const errValidation = {};
@@ -91,7 +91,7 @@ class SocialMediaController {
           id,
         },
       });
-      res.status(200).json({
+      return res.status(200).json({
         message: 'Your social media has been successfully deleted',
       });
     } catch (err) {

@@ -29,7 +29,7 @@ class CommentPhotoControlller {
           UserId: user,
         },
       });
-      res.status(200).json(result);
+      return res.status(200).json(result);
     } catch (err) {
       return res.status(500).json(err.message);
     }
@@ -99,7 +99,7 @@ class CommentPhotoControlller {
           createdAt: result.createdAt,
         },
       };
-      res.status(200).json(payload);
+      return res.status(200).json(payload);
     } catch (err) {
       if (err.name === 'SequelizeValidationError') {
         const errValidation = {};
@@ -120,7 +120,7 @@ class CommentPhotoControlller {
           id,
         },
       });
-      res.status(200).json({
+      return res.status(200).json({
         message: 'Your comment has been successfully deleted',
       });
     } catch (err) {

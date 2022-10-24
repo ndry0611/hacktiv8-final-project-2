@@ -17,7 +17,7 @@ class PhotoControlller {
           UserId: user,
         },
       });
-      res.status(200).json(result);
+      return res.status(200).json(result);
     } catch (err) {
       return res.status(500).json(err.message);
     }
@@ -78,7 +78,7 @@ class PhotoControlller {
       });
 
       photo = photo[1][0].dataValues;
-      res.status(200).json({ photo });
+      return res.status(200).json({ photo });
     } catch (err) {
       if (err.name === 'SequelizeValidationError') {
         const errValidation = {};
@@ -99,7 +99,7 @@ class PhotoControlller {
           id,
         },
       });
-      res.status(200).json({
+      return res.status(200).json({
         message: 'Your photo has been successfully deleted',
       });
     } catch (err) {
