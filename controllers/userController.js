@@ -123,12 +123,11 @@ class UserControlller {
         email: result.email,
         full_name: result.full_name,
         username: result.username,
-        password: result.password,
         profile_image_url: result.profile_image_url,
         age: result.age,
         phone_number: result.phone_number,
       };
-      return res.status(200).json(payload);
+      return res.status(200).json({ user: payload });
     } catch (err) {
       if (err.name === 'SequelizeValidationError') {
         const errValidation = {};

@@ -5,12 +5,17 @@ class SocialMediaController {
     const user = res.locals.user.id;
     try {
       const result = await SocialMedias.findAll({
-        include: User,
+        include: [
+          {
+            model: User,
+            attributes: ['id', 'username', 'profile_image_url']
+          },
+        ],
         where: {
           UserId: user,
         },
       });
-      return res.status(200).json(result);
+      return res.status(200).json({ social_medias: result });
     } catch (err) {
       return res.status(500).json(err.message);
     }
@@ -28,14 +33,6 @@ class SocialMediaController {
         updatedAt: new Date(),
         UserId: user,
       });
-
-      //   let response = {
-      //     id: result.id,
-      //     comment: result.comment,
-      //     UserId: result.UserId,
-      //     updatedAt: result.updatedAt,
-      //     createdAt: result.createdAt,
-      //   };
 
       return res.status(201).json({ social_media });
     } catch (err) {
@@ -84,7 +81,6 @@ class SocialMediaController {
 
   static async DeleteSocialMediaById(req, res) {
     let id = +req.params.socialmediaId;
-    console.log(id);
     try {
       await SocialMedias.destroy({
         where: {

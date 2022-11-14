@@ -11,13 +11,18 @@ class PhotoControlller {
             model: User,
             attributes: ['id', 'username', 'profile_image_url'],
           },
+          {
+            model: Comment,
+            attributes: ['comment'],
+            include: [{ model: User, attributes: ['username'] }]
+          }
         ],
 
         where: {
           UserId: user,
         },
       });
-      return res.status(200).json(result);
+      return res.status(200).json({ photos: result });
     } catch (err) {
       return res.status(500).json(err.message);
     }
