@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:db:create": "npx sequelize db:create",
-    "dev:db:migrate": "npx sequelize db:migrate",
-    "dev:db:seed": "npx sequelize db:seed:all",
+    "dev:db:setup": "npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
     "dev": "nodemon app.js"
   },
   "keywords": [],
