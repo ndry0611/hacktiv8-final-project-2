@@ -17,6 +17,7 @@ module.exports = {
       'Users',
       [
         {
+          id: 1,
           full_name: 'Andry',
           email: 'andry@gmail.com',
           username: 'andry',
@@ -28,6 +29,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
+          id: 2,
           full_name: 'Resa Auliana Risyan',
           email: 'resarisyan@gmail.com',
           username: 'resarisyan',
