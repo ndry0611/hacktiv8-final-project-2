@@ -92,15 +92,8 @@ router.delete(
 );
 
 // 404
-router.use((req, res, next) => {
-  const protocol = req.protocol;
-  const host = req.hostname;
-  const url = req.originalUrl;
-  const port = process.env.APP_PORT;
-  const fullUrl = `${protocol}://${host}:${port}${url}`;
-  res.status(404).send({
-    devMessage: `Route ${fullUrl} Not Found`,
-  });
+router.get('*', (req, res) => {
+  res.status(404).send({devMessage: `Route Not Found`});
 });
 
 module.exports = router;
