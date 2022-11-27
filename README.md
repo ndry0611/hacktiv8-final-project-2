@@ -8,9 +8,8 @@ https://hacktiv8-final-project-2-production-5128.up.railway.app/
 1. `npm install` untuk menginstall dependencies
 2. Create, Migrate, dan Seed data terlebih dahulu<br>
    ```
-   Create Database : npx sequelize db:create
-   Migrate Table : npx sequelize db:migrate
-   Seed Data : npx sequelize db:seed
+   npm run dev : "node app.js",
+   npm run start:production : "npx sequelize db:migrate && npx sequelize db:seed:all"
    ```
 3. `npm run dev` untuk menjalankan server
 Sesuaikan `config` dengan database postgres device
